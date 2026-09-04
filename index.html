@@ -1,88 +1,292 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Comparative Analysis In Recognizing AI-Generated Media Among NU Fairview SHS Students And Millenials
-</title>
+    <title>Can You Spot Fake AI Media?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 0;
+        }
+
+        .site-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .hero {
+            padding: 60px 0 40px 0;
+            text-align: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background-color: #eff6ff;
+            color: #a932ee;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #dbeafe;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: #a932ee;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto 24px auto;
+        }
+
+        .section {
+            padding: 40px 0;
+        }
+
+        .section-heading {
+            font-size: 1.4rem;
+            color: #0f172a;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .stats-grid {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            flex: 1;
+            min-width: 220px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px 16px;
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #a932ee;
+            margin-bottom: 4px;
+        }
+
+        .stat-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .stat-subtext {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .comparison-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-box {
+            flex: 1;
+            min-width: 280px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .info-box h3 {
+            font-size: 1.1rem;
+            color: #0f172a;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eff6ff;
+        }
+
+        .info-box ul {
+            list-style-type: none;
+        }
+
+        .info-box li {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .info-box li::before {
+            content: "•";
+            color: #a932ee;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .clues-box {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .clues-list {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 12px;
+            justify-content: left;
+        }
+
+        .clue-tag {
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 24px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
 
+    <section class="hero">
+        <div class="container">
+            <h1>Can You Spot <span>Fake AI Media?</span></h1>
+            <p>In a world where AI-generated content is becoming increasingly prevalent, the ability to distinguish between real and fake media has become a critical skill. Now, are you up for this challenge?</p>
+        </div>
+    </section>
+
 <hr>
 
-<!-- HEADER: Contains the main title and site navigation -->
-    <header>
-        <h1><strong>COMPARATIVE ANALYSIS IN RECOGNIZING AI-GENERATED MEDIA AMONG NU FAIRVIEW SHS STUDENTS AND MILLENNIALS</strong></h1>
-        <p>This study investigates the ability of Senior High School (SHS) students from NU Fairview and Millennials to identify AI-generated media and distinguish it from human-made content. As artificial intelligence continues to improve, AI-generated images, videos, and other forms of media have become increasingly realistic. This development creates opportunities for creativity and innovation but also increases risks such as misinformation, scams, impersonation, fraud, and deepfakes.</p>
- 
-<hr>
+    <section id="stats" class="section">
+        <div class="container">
+            <h2 class="section-heading">Key Study Findings</h2>
+            
+            <div class="stats-grid">
+                
+                <div class="stat-box">
+                    <div class="stat-number">59.1%</div>
+                    <div class="stat-title">Millennials</div>
+                    <div class="stat-subtext">Higher accuracy due to taking more time to analyze visual details.</div>
+                </div>
 
+                <div class="stat-box">
+                    <div class="stat-number">55.5%</div>
+                    <div class="stat-title">SHS Students</div>
+                    <div class="stat-subtext">Higher daily tech exposure, but relied more on initial instinct.</div>
+                </div>
 
-    <p> </p>The study was motivated by concerns about how different age groups recognize AI-generated content. Previous research suggests that younger individuals generally perform better in detecting AI-generated images than older people. However, factors such as experience, confidence, exposure to technology, and digital literacy may also influence recognition accuracy.
+                <div class="stat-box">
+                    <div class="stat-number">124</div>
+                    <div class="stat-title">Participants</div>
+                    <div class="stat-subtext">95 SHS Students and 29 Millennials surveyed in Quezon City.</div>
+                </div>
 
-<p></p><strong>The research focuses on two age groups:</strong>
-<li> Senior High School students aged 18 to 19 years old.</li>
-<li> Millennials aged 28 to 44 years old living in Quezon City.</li>
+            </div>
+        </div>
+    </section>
 
-<h2>Theoretical Framework</h2>
-<p></p>The theoretical foundation of the study is <strong>Cognitive Aging Theory</strong>, which explains how aging affects mental processes such as perception, attention, memory, and visual processing. The theory suggests that younger individuals may process visual information more quickly, while older individuals may rely more on experience and observation. This framework helped researchers examine how age influences the ability to recognize AI-generated media.
+    <hr>
 
-<h2>Research Questions</h3>
-<p> </p><em>The study sought to answer three major questions:</em>
-<ol> </ol>1. What are the demographic characteristics of the respondents in terms of age and sex?
-<ol></ol>2. How accurate are respondents in identifying AI-generated and human-made media?
-<ol> </ol>3. What factors do respondents use when deciding whether content is AI-generated or human-made?
+    <section id="comparison" class="section">
+        <div class="container">
+            <h2 class="section-heading">How Decision Styles Differed</h2>
+            
+            <div class="comparison-grid">
+                
+                <div class="info-box">
+                    <h3>Millennials (Ages 28–44)</h3>
+                    <ul>
+                        <li>Focused on careful visual inspection.</li>
+                        <li>Checked lighting, image sharpness, and textures.</li>
+                        <li>Scored higher in video detection tests (63.3%).</li>
+                    </ul>
+                </div>
 
-<h2>Research Design</h4>
-A <strong>comparative quantitative</strong> research design was used. Researchers selected participants through purposive sampling to ensure they met the required age criteria. The final sample consisted of <strong>95 students and 29 Millennials.</strong> 
+                <div class="info-box">
+                    <h3>SHS Students (Ages 18–19)</h3>
+                    <ul>
+                        <li>Relied mainly on quick instincts and immediate impressions.</li>
+                        <li>Scored high on simple single-image tests (70.9%).</li>
+                        <li>Found multiple-choice identification more challenging.</li>
+                    </ul>
+                </div>
 
-<h2>Data Collection</h2>
-<p></p><i>Data were collected through a questionnaire divided into several sections.</i> 
-<li>Participants first provided demographic information, including age, sex, experience with art, and exposure to AI-generated media. They were then asked to identify whether presented images and videos were AI-generated or human-made. Some sections involved single images and videos, while others required participants to identify AI-generated content from multiple options. Participants were also asked to explain the reasoning behind each answer.</li>
+            </div>
+        </div>
+    </section>
 
+    <hr>
 
+    <section id="clues" class="section">
+        <div class="container">
+            <h2 class="section-heading">Top Visual Clues Used to Spot AI</h2>
+            
+            <div class="clues-box">
+                <div class="clues-list">
+                    <span class="clue-tag"> Unnatural Lighting</span>
+                    <span class="clue-tag"> Facial Distortions</span>
+                    <span class="clue-tag"> Irregular Fingers & Hands</span>
+                    <span class="clue-tag"> Smooth/Plastic Textures</span>
+                    <span class="clue-tag">Overly Complex Backgrounds</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<li>The questionnaire was reviewed by research teachers and an information technology expert to ensure validity and reliability before it was distributed. </li>
+    <footer>
+        <div class="container">
+            <p>Visquera, Ean Ic R. • CS30 Websites and Online Communication</p>
+        </div>
+    </footer>
 
-<li>Results showed that both groups generally reported limited exposure to AI-generated media.</li>
-<li>Many participants indicated that they rarely interacted with AI-generated content in their daily lives. Similarly, most respondents reported little experience creating art. 
-    
-<p><i><strong>Researchers suggested that limited exposure to AI media and artistic knowledge may reduce the ability to recognize AI-generated content accurately.</strong></i></p>
-
-<li> For the image recognition portion of the study, male students achieved an average accuracy rate of 70.94%, while male Millennials achieved 63.33%. Female Millennials achieved 63.48%, while female students achieved 58.10%. These findings indicate that accuracy varied across both sex and age groups depending on the specific images presented.</li>
-
-<li>For the video recognition section, Millennials generally performed better than students. Male Millennials achieved an average accuracy rate of 63.33%, while female Millennials achieved 53.91%. Male students scored 48.68%, and female students scored 51.43%. Researchers suggested that Millennials may have taken more time analyzing visual details before making decisions.</li>
-
-<li>In the section involving multiple images, male Millennials achieved 56.67% accuracy, female students achieved 55.71%, female Millennials achieved 53.91%, and male students achieved 48.30%. This section proved difficult for many participants because some AI-generated images closely resembled authentic content.</li>
-
-<p><mark>When all tests were combined, students achieved an overall average accuracy of 55.53%, while Millennials achieved an overall average accuracy of 59.11%. Although students reported greater exposure to technology and AI media, Millennials performed slightly better overall.</mark></p>
-
-<li>One significant finding was that Millennials tended to rely more on image quality and detailed analysis when making decisions.</li>
-<li>Students, meanwhile, often relied on instinct or quick judgments. 
-    
-<p><i><strong>Researchers concluded that careful evaluation may be more important than simple familiarity with AI technology when identifying AI-generated content.</strong></i></p>
-
-<p>Respondents commonly used three main methods when making decisions:</p>
-<ol>
-<li>Evaluating the quality of images or videos.</li>
-<li>Trusting their instincts or gut feelings.</li>
-<li>Guessing when they were uncertain.</li>
-
-<p><strong>The majority of both students and Millennials indicated that image quality was their primary basis for identification. Participants often focused on visual clues such as:</strong></p>
-<ol>
-<li>Unnatural lighting.</li>
-<li>Distorted faces.</li>
-<li>Irregular hands or fingers.</li>
-<li>Unrealistic textures.</li>
-<li>Overly detailed or artificial-looking features.</li>
-</ol>
-
-<h2>Conclusion</h2>
-<ol>
-<li>The research concluded that age influences how individuals recognize AI-generated media, but age alone does not determine success. While students generally had more exposure to AI-related technologies, Millennials achieved slightly higher overall scores because they spent more time evaluating visual quality and identifying inconsistencies. The findings suggest that decision-making style, observation skills, and attention to detail play an important role in detecting AI-generated content.</li>
-<li>The study also highlights the growing importance of AI literacy. As AI-generated media becomes more realistic, people must develop stronger critical-thinking and media-analysis skills to avoid being misled by deepfakes, scams, or misinformation.</li>
-<li>Researchers recommended that students and adults learn common indicators of AI-generated content and use them as a checklist when evaluating media. They also recommended that advertisers clearly disclose the use of AI-generated content. For AI developers, the study suggests implementing visible watermarks or labels that identify AI-generated media.</li>
-<li>Future researchers are encouraged to expand the sample size and include participants from different locations and demographics to improve the reliability of results.</li>
-<li>The study faced several limitations. These included a relatively small Millennial sample size, internet connectivity issues during data collection, difficulty accessing some video content, possible assistance among respondents while answering, and the restricted geographic focus on NU Fairview students and Millennials living in Quezon City.</li>
-</ol>
-<p> Overall, the research demonstrates that both students and Millennials face challenges in accurately identifying AI-generated media. While Millennials achieved slightly higher accuracy rates, both groups showed only moderate success in distinguishing AI-generated content from human-made media. The findings emphasize the importance of improving public awareness, digital literacy, and critical evaluation skills as AI-generated media becomes increasingly common in society.</li>
-</ol>
+</body>
+</html>
