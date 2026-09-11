@@ -30,10 +30,27 @@
             padding: 16px 0;
         }
 
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .site-title {
             font-size: 1.1rem;
             font-weight: 700;
             color: #0f172a;
+        }
+
+        .nav-links a {
+            color: #64748b;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
         }
 
         .hero {
@@ -69,6 +86,21 @@
             color: #64748b;
             max-width: 600px;
             margin: 0 auto 24px auto;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #2563eb;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+         .hero-btn:hover {
+            background-color: #1d4ed8;
         }
 
         .section {
@@ -197,10 +229,23 @@
 </head>
 <body>
 
+     <header>
+        <div class="container nav-flex">
+            <div class="site-title">CS30-8P Preliminaries</div>
+            <nav class="nav-links">
+                <a href="#stats">Results</a>
+                <a href="#comparison">Groups</a>
+                <a href="#clues">Visual Clues</a>
+            </nav>
+        </div>
+    </header>
+
     <section class="hero">
         <div class="container">
             <h1>Can You Spot <span>Fake AI Media?</span></h1>
-            <p>In a world where AI-generated content is becoming increasingly prevalent, the ability to distinguish between real and fake media has become a critical skill. Now, are you up for this challenge?</p>
+            <p>A simple comparative summary on how Senior High School Students and Millennials distinguish AI-generated images and videos.</p>
+            <!-- Single, clean main button -->
+            <a href="#stats" class="hero-btn">View Key Results</a>
         </div>
     </section>
 
