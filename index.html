@@ -268,6 +268,207 @@
             color: #64748b;
             margin-top: 40px;
         }
+
+        /* Quiz Styles */
+        .age-selection {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 32px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .age-selection h3 {
+            font-size: 1.2rem;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .age-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .age-btn {
+            padding: 10px 20px;
+            border: 2px solid #cbd5e1;
+            background-color: #ffffff;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #475569;
+            transition: all 0.3s ease;
+        }
+
+        .age-btn:hover {
+            border-color: #a932ee;
+            color: #a932ee;
+        }
+
+        .age-btn.active {
+            background-color: #a932ee;
+            color: #ffffff;
+            border-color: #a932ee;
+        }
+
+        .quiz-container {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 32px;
+            display: none;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .quiz-progress {
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #a932ee;
+            transition: width 0.3s ease;
+        }
+
+        .quiz-question {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .quiz-question h4 {
+            font-size: 1.1rem;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .image-card {
+            position: relative;
+            cursor: pointer;
+            border: 3px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .image-card:hover {
+            border-color: #a932ee;
+            transform: scale(1.02);
+        }
+
+        .image-card.selected {
+            border-color: #a932ee;
+            box-shadow: 0 0 0 4px rgba(169, 50, 238, 0.2);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-label {
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            color: #0f172a;
+            background-color: #f1f5f9;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .quiz-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .submit-btn {
+            background-color: #a932ee;
+            color: #ffffff;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            background-color: #8b2bc4;
+        }
+
+        .submit-btn:disabled {
+            background-color: #cbd5e1;
+            cursor: not-allowed;
+        }
+
+        .quiz-results {
+            background-color: #eff6ff;
+            border: 1px solid #dbeafe;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            display: none;
+        }
+
+        .quiz-results.active {
+            display: block;
+        }
+
+        .results-score {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #a932ee;
+            margin-bottom: 12px;
+        }
+
+        .results-text {
+            font-size: 1.1rem;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .restart-btn {
+            padding: 10px 24px;
+            background-color: #a932ee;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            background-color: #8b2bc4;
+        }
     </style>
 </head>
 <body>
@@ -293,7 +494,167 @@
         </div>
     </section>
 
-    <section id="stats" class="section">
+   
+    
+
+    <hr>
+
+    <section id="challenge" class="section">
+        <div class="container">
+            <h2 class="section-heading">Challenge Yourself</h2>
+            <p>Test your ability to distinguish between real and AI-generated media. Start by selecting your age group below.</p>
+
+            <!-- Age Selection -->
+            <div class="age-selection" id="ageSelection">
+                <h3>What is your age group?</h3>
+                <div class="age-buttons">
+                    <button class="age-btn" data-group="baby-boomers">Baby Boomers (1946–1964)</button>
+                    <button class="age-btn" data-group="generation-x">Generation X (1965–1980)</button>
+                    <button class="age-btn" data-group="generation-y">Generation Y (1981–1996)</button>
+                    <button class="age-btn" data-group="generation-z">Generation Z (1997–2012)</button>
+                    <button class="age-btn" data-group="generation-alpha">Generation Alpha (2013–2025)</button>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-progress">
+                    <span id="questionCounter">Question 1 of 5</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 20%;"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>Which image is REAL?</h4>
+                </div>
+
+                <div class="images-grid">
+                    <div class="image-card" data-selection="image1">
+                        <img src="https://via.placeholder.com/400x300?text=Image+1" alt="Image 1">
+                        <div class="image-label">Image 1</div>
+                    </div>
+                    <div class="image-card" data-selection="image2">
+                        <img src="https://via.placeholder.com/400x300?text=Image+2" alt="Image 2">
+                        <div class="image-label">Image 2</div>
+                    </div>
+                </div>
+
+                <div class="quiz-buttons">
+                    <button class="quiz-btn submit-btn" id="submitBtn" disabled>Submit Answer</button>
+                </div>
+            </div>
+
+            <!-- Results Container -->
+            <div class="quiz-results" id="quizResults">
+                <div class="results-score" id="finalScore">4/5</div>
+                <div class="results-text" id="resultsText">Great job! You scored 80%</div>
+                <button class="restart-btn" id="restartBtn">Take Quiz Again</button>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <script>
+        let selectedAgeGroup = null;
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedAnswer = null;
+
+        // Sample quiz data - update with your actual questions
+        const quizData = [
+            { real: 'image1', ai: 'image2' },
+            { real: 'image2', ai: 'image1' },
+            { real: 'image1', ai: 'image2' },
+            { real: 'image2', ai: 'image1' },
+            { real: 'image1', ai: 'image2' }
+        ];
+
+        // Age group selection
+        document.querySelectorAll('.age-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedAgeGroup = this.dataset.group;
+                
+                // Show quiz after selecting age group
+                document.getElementById('ageSelection').style.display = 'none';
+                document.getElementById('quizContainer').classList.add('active');
+            });
+        });
+
+        // Image card selection
+        document.querySelectorAll('.image-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.image-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedAnswer = this.dataset.selection;
+                
+                // Enable submit button when an image is selected
+                document.getElementById('submitBtn').disabled = false;
+            });
+        });
+
+        // Submit answer
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const correctAnswer = quizData[currentQuestion].real;
+            
+            if (selectedAnswer === correctAnswer) {
+                score++;
+            }
+
+            currentQuestion++;
+
+            if (currentQuestion < quizData.length) {
+                // Load next question
+                selectedAnswer = null;
+                document.querySelectorAll('.image-card').forEach(c => c.classList.remove('selected'));
+                document.getElementById('submitBtn').disabled = true;
+                
+                const progress = ((currentQuestion + 1) / quizData.length) * 100;
+                document.getElementById('progressFill').style.width = progress + '%';
+                document.getElementById('questionCounter').textContent = `Question ${currentQuestion + 1} of ${quizData.length}`;
+            } else {
+                // Show results
+                showResults();
+            }
+        });
+
+        // Show results
+        function showResults() {
+            document.getElementById('quizContainer').classList.remove('active');
+            document.getElementById('quizResults').classList.add('active');
+            
+            const percentage = Math.round((score / quizData.length) * 100);
+            document.getElementById('finalScore').textContent = `${score}/${quizData.length}`;
+            document.getElementById('resultsText').textContent = `Great job! You scored ${percentage}% - Age Group: ${selectedAgeGroup}`;
+        }
+
+        // Restart quiz
+        document.getElementById('restartBtn').addEventListener('click', function() {
+            currentQuestion = 0;
+            score = 0;
+            selectedAnswer = null;
+            selectedAgeGroup = null;
+            
+            document.getElementById('quizResults').classList.remove('active');
+            document.getElementById('ageSelection').style.display = 'block';
+            document.getElementById('quizContainer').classList.remove('active');
+            
+            document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.image-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('submitBtn').disabled = true;
+            
+            document.getElementById('progressFill').style.width = '20%';
+            document.getElementById('questionCounter').textContent = 'Question 1 of 5';
+        });
+    </script>
+
+</body>
+</html>
+
+ <section id="stats" class="section">
         <div class="container">
             <h2 class="section-heading">Key Study Findings</h2>
             
@@ -351,8 +712,6 @@
         </div>
     </section>
 
-    <hr>
-
     <section id="clues" class="section">
         <div class="container">
             <h2 class="section-heading">Top Visual Clues Used to Spot AI</h2>
@@ -369,30 +728,9 @@
         </div>
     </section>
 
-<hr>
-
- <section id="challenge" class="section">
-        <div class="container">
-            <h2 class="section-heading">Challenge Yourself</h2>
-            <p>Test your ability to distinguish between real and AI-generated media.</p>
-        </div>
-
-        <div class="container">
-            <div class="comparison-grid">
-                
-
-
-
-
-    </section>
-
-<hr>
-
-    <footer>
+        <footer>
         <div class="container">
             <p>Visquera, Ean Ic R. • CS30 Websites and Online Communication</p>
         </div>
     </footer>
 
-</body>
-</html>
