@@ -58,6 +58,49 @@
             text-align: center;
         }
 
+        .hero {
+    position: relative;
+    min-height: 100vh;
+
+    /* Background image */
+    background: url("https://cdn.pixabay.com/photo/2015/06/24/15/45/hands-820272_1280.jpg") center center/cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: white;
+}
+
+/* Dark overlay for readability */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* Keep text above overlay */
+.hero .container {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.hero span {
+    color: #00d4ff;
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
         .hero-tag {
             display: inline-block;
             background-color: #eff6ff;
@@ -71,26 +114,26 @@
         }
 
         .hero h1 {
-            font-size: 2.2rem;
-            color: #0f172a;
+            font-size: 4.5rem;
+            color: #fafafa;
             margin-bottom: 12px;
             font-weight: 800;
         }
 
         .hero h1 span {
-            color: #a932ee;
+            color: #c66cfa;
         }
 
         .hero p {
             font-size: 1.05rem;
-            color: #64748b;
+            color: #f0f5fc;
             max-width: 600px;
             margin: 0 auto 24px auto;
         }
 
         .hero-btn {
             display: inline-block;
-            background-color: #2563eb;
+            background-color: #a932ee;
             color: #ffffff;
             text-decoration: none;
             padding: 10px 22px;
@@ -100,7 +143,7 @@
         }
 
          .hero-btn:hover {
-            background-color: #1d4ed8;
+            background-color: #a932ee;
         }
 
         .section {
@@ -236,6 +279,7 @@
                 <a href="#stats">Results</a>
                 <a href="#comparison">Groups</a>
                 <a href="#clues">Visual Clues</a>
+                <a href="#challenge">Challenge</a>
             </nav>
         </div>
     </header>
@@ -243,13 +287,11 @@
     <section class="hero">
         <div class="container">
             <h1>Can You Spot <span>Fake AI Media?</span></h1>
-            <p>A simple comparative summary on how Senior High School Students and Millennials distinguish AI-generated images and videos.</p>
-            <!-- Single, clean main button -->
-            <a href="#stats" class="hero-btn">View Key Results</a>
+            <p>AI has revolutionized the way we create and consume media, but it also poses challenges in distinguishing between real and generated content within <u>age groups</u>.</p>
+            <p><b>Are you up for the challenge?</b></p>
+            <a href="#challenge" class="hero-btn">Take the Challenge</a>
         </div>
     </section>
-
-<hr>
 
     <section id="stats" class="section">
         <div class="container">
@@ -326,6 +368,25 @@
             </div>
         </div>
     </section>
+
+<hr>
+
+ <section id="challenge" class="section">
+        <div class="container">
+            <h2 class="section-heading">Challenge Yourself</h2>
+            <p>Test your ability to distinguish between real and AI-generated media.</p>
+        </div>
+
+        <div class="container">
+            <div class="comparison-grid">
+                
+
+
+
+
+    </section>
+
+<hr>
 
     <footer>
         <div class="container">
