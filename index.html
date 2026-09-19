@@ -440,19 +440,19 @@
 </head>
 
 <header>
-        <div class="container nav-flex">
-            <div class="site-title">CS30-8P</div>
-            <nav class="nav-links" aria-label="Main navigation">
-                <a href="#stats">Results</a>
-                <a href="#comparison">Groups</a>
-                <a href="#clues">Visual Clues</a>
-                <a href="#challenge">Challenge</a>
-            </nav>
-        </div>
-    </header>
+    <div class="container nav-flex">
+        <div class="site-title">CS30-8P</div>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="#stats">Results</a>
+            <a href="#comparison">Groups</a>
+            <a href="#clues">Visual Clues</a>
+            <a href="#challenge">Challenge</a>
+        </nav>
+    </div>
+</header>
 
 <body>
-        <section class="hero">
+    <section class="hero">
         <div class="container">
             <h1>Can You Spot <span>Fake AI Media?</span></h1>
             <p>AI has revolutionized the way we create and consume media, but it also poses challenges in distinguishing between real and synthetic content with age groups.</p>
@@ -460,9 +460,6 @@
             <a href="#challenge" class="hero-btn">Challenge Now</a>
         </div>
     </section>
-
-    
-
 
     <section id="challenge" class="section">
         <div class="container">
@@ -561,6 +558,14 @@
                     this.classList.add("active");
                     selectedAgeGroup = this.dataset.group;
 
+                    // Google Analytics tracking for Age Selection
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'select_age_group', {
+                            'event_category': 'Quiz Interaction',
+                            'event_label': selectedAgeGroup
+                        });
+                    }
+
                     ageSelection.style.display = "none";
                     quizContainer.classList.add("active");
                     updateProgress();
@@ -573,6 +578,15 @@
                     this.classList.add("selected");
                     selectedAnswer = this.dataset.selection;
                     submitBtn.disabled = false;
+
+                    // Google Analytics tracking for Image Selection
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'select_image_option', {
+                            'event_category': 'Quiz Interaction',
+                            'event_label': selectedAnswer,
+                            'question_number': currentQuestion + 1
+                        });
+                    }
                 });
             });
 
@@ -580,9 +594,20 @@
                 if (!selectedAnswer) return;
 
                 const correctAnswer = quizData[currentQuestion].real;
+                const isCorrect = (selectedAnswer === correctAnswer);
 
-                if (selectedAnswer === correctAnswer) {
+                if (isCorrect) {
                     score++;
+                }
+
+                // Google Analytics tracking for Answer Submission
+                if (typeof gtag === 'function') {
+                    gtag('event', 'submit_answer', {
+                        'event_category': 'Quiz Interaction',
+                        'question_number': currentQuestion + 1,
+                        'selected_option': selectedAnswer,
+                        'is_correct': isCorrect
+                    });
                 }
 
                 currentQuestion++;
@@ -594,12 +619,31 @@
                     const percentage = Math.round((score / quizData.length) * 100);
                     finalScore.textContent = score + "/" + quizData.length;
                     resultsText.textContent = "You scored " + percentage + "% in the " + selectedAgeGroup + " category.";
+
+                    // Google Analytics tracking for Quiz Completion
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'quiz_completed', {
+                            'event_category': 'Quiz Results',
+                            'age_group': selectedAgeGroup,
+                            'final_score': score,
+                            'total_questions': quizData.length,
+                            'score_percentage': percentage
+                        });
+                    }
+
                     quizContainer.classList.remove("active");
                     quizResults.classList.add("active");
                 }
             });
 
             restartBtn.addEventListener("click", function () {
+                // Google Analytics tracking for Quiz Restart
+                if (typeof gtag === 'function') {
+                    gtag('event', 'restart_quiz', {
+                        'event_category': 'Quiz Interaction'
+                    });
+                }
+
                 selectedAgeGroup = null;
                 currentQuestion = 0;
                 score = 0;
@@ -616,8 +660,6 @@
             });
         });
     </script>
-
-
 
     <section id="stats" class="section">
         <div class="container">
@@ -689,12 +731,11 @@
         </div>
     </section>
 
-        <footer>
+    <footer>
         <div class="container">
             <p>Visquera, Ean Ic R. • CS30 Websites and Online Communication</p>
         </div>
     </footer>
-
-
 </body>
 </html>
+
