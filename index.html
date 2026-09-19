@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Can You Spot Fake AI Media?</title>
+
     <style>
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             line-height: 1.6;
             background-color: #f8fafc;
             color: #334155;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 980px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -34,6 +38,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
         }
 
         .site-title {
@@ -42,265 +47,207 @@
             color: #0f172a;
         }
 
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
         .nav-links a {
             color: #64748b;
             text-decoration: none;
-            margin-left: 20px;
             font-size: 0.9rem;
         }
 
         .nav-links a:hover {
-            color: #2563eb;
-        }
-
-        .hero {
-            padding: 60px 0 40px 0;
-            text-align: center;
-        }
-
-        .hero {
-    position: relative;
-    min-height: 100vh;
-
-    /* Background image */
-    background: url("https://cdn.pixabay.com/photo/2015/06/24/15/45/hands-820272_1280.jpg") center center/cover no-repeat;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-    color: white;
-}
-
-/* Dark overlay for readability */
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-}
-
-/* Keep text above overlay */
-.hero .container {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-}
-
-.hero h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-}
-
-.hero span {
-    color: #00d4ff;
-}
-
-.hero p {
-    font-size: 1.2rem;
-}
-
-        .hero-tag {
-            display: inline-block;
-            background-color: #eff6ff;
             color: #a932ee;
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            border: 1px solid #dbeafe;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 72vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: url("https://cdn.pixabay.com/photo/2015/06/24/15/45/hands-820272_1280.jpg") center/cover no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            color: #fafafa;
-            margin-bottom: 12px;
+            margin: 0 0 12px;
+            font-size: clamp(2.4rem, 5vw, 4.2rem);
+            line-height: 1.1;
             font-weight: 800;
         }
 
         .hero h1 span {
-            color: #c66cfa;
+            color: #d6a5ff;
         }
 
         .hero p {
-            font-size: 1.05rem;
-            color: #f0f5fc;
-            max-width: 600px;
-            margin: 0 auto 24px auto;
+            margin: 0 auto 28px;
+            max-width: 680px;
+            font-size: 1.08rem;
+            color: #f2f7ff;
         }
 
         .hero-btn {
             display: inline-block;
-            background-color: #a932ee;
-            color: #ffffff;
+            background: #a932ee;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
             text-decoration: none;
-            padding: 10px 22px;
-            border-radius: 6px;
             font-weight: 600;
-            font-size: 0.95rem;
         }
 
-         .hero-btn:hover {
-            background-color: #a932ee;
+        .hero-btn:hover {
+            background: #8f2bc7;
         }
 
         .section {
-            padding: 40px 0;
+            padding: 42px 0;
         }
 
         .section-heading {
-            font-size: 1.4rem;
+            margin: 0 0 22px;
+            font-size: 1.45rem;
             color: #0f172a;
-            margin-bottom: 20px;
-            text-align: left;
         }
 
-        .stats-grid {
+        .stats-grid,
+        .comparison-grid {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             flex-wrap: wrap;
         }
 
-        .stat-box {
+        .stat-box,
+        .info-box {
             flex: 1;
-            min-width: 220px;
-            background-color: #ffffff;
+            min-width: 240px;
+            background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 24px 16px;
-            text-align: left;
+            border-radius: 10px;
+            padding: 24px 18px;
         }
 
         .stat-number {
             font-size: 2.2rem;
             font-weight: 800;
             color: #a932ee;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .stat-title {
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 0.96rem;
+            font-weight: 700;
             color: #1e293b;
             margin-bottom: 6px;
         }
 
         .stat-subtext {
-            font-size: 0.85rem;
             color: #64748b;
-        }
-
-        .comparison-grid {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .info-box {
-            flex: 1;
-            min-width: 280px;
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 24px;
+            font-size: 0.88rem;
         }
 
         .info-box h3 {
-            font-size: 1.1rem;
+            margin: 0 0 12px;
+            font-size: 1.08rem;
             color: #0f172a;
-            margin-bottom: 12px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #eff6ff;
+            border-bottom: 2px solid #f3e8ff;
         }
 
         .info-box ul {
-            list-style-type: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .info-box li {
-            font-size: 0.9rem;
-            color: #475569;
-            margin-bottom: 8px;
             position: relative;
-            padding-left: 16px;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            color: #475569;
         }
 
         .info-box li::before {
             content: "•";
-            color: #a932ee;
-            font-weight: bold;
             position: absolute;
             left: 0;
+            color: #a932ee;
+            font-weight: 700;
         }
 
         .clues-box {
-            background-color: #ffffff;
+            background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 24px;
         }
 
         .clues-list {
             display: flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             gap: 12px;
-            justify-content: left;
         }
 
         .clue-tag {
-            background-color: #f1f5f9;
+            background: #f8fafc;
             border: 1px solid #cbd5e1;
+            border-radius: 999px;
             padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             color: #334155;
-            font-weight: 500;
+            font-weight: 600;
         }
 
-        footer {
-            background-color: #ffffff;
-            border-top: 1px solid #e2e8f0;
-            padding: 24px 0;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-top: 40px;
-        }
-
-        /* Quiz Styles */
         .age-selection {
-            background-color: #ffffff;
+            background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 32px;
+            border-radius: 10px;
+            padding: 32px 24px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
 
         .age-selection h3 {
-            font-size: 1.2rem;
+            margin: 0 0 18px;
             color: #0f172a;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
         }
 
         .age-buttons {
             display: flex;
-            gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 12px;
         }
 
         .age-btn {
-            padding: 10px 20px;
+            padding: 10px 18px;
             border: 2px solid #cbd5e1;
-            background-color: #ffffff;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
+            border-radius: 8px;
+            background: #ffffff;
             color: #475569;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
         }
 
         .age-btn:hover {
@@ -309,17 +256,17 @@
         }
 
         .age-btn.active {
-            background-color: #a932ee;
-            color: #ffffff;
+            background: #a932ee;
             border-color: #a932ee;
+            color: #ffffff;
         }
 
         .quiz-container {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 32px;
             display: none;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 28px 20px;
         }
 
         .quiz-container.active {
@@ -327,115 +274,108 @@
         }
 
         .quiz-progress {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             font-size: 0.9rem;
             color: #64748b;
         }
 
         .progress-bar {
             width: 100%;
-            height: 6px;
-            background-color: #e2e8f0;
-            border-radius: 3px;
+            height: 7px;
+            background: #e2e8f0;
+            border-radius: 999px;
             overflow: hidden;
             margin-top: 8px;
         }
 
         .progress-fill {
+            width: 20%;
             height: 100%;
-            background-color: #a932ee;
-            transition: width 0.3s ease;
+            background: #a932ee;
+            transition: width 0.25s ease;
         }
 
         .quiz-question {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .quiz-question h4 {
+            margin: 0;
             font-size: 1.1rem;
             color: #0f172a;
-            margin-bottom: 12px;
         }
 
         .images-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 32px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-bottom: 26px;
         }
 
         .image-card {
             position: relative;
-            cursor: pointer;
             border: 3px solid #e2e8f0;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: 0.2s ease;
         }
 
         .image-card:hover {
             border-color: #a932ee;
-            transform: scale(1.02);
+            transform: translateY(-1px);
         }
 
         .image-card.selected {
             border-color: #a932ee;
-            box-shadow: 0 0 0 4px rgba(169, 50, 238, 0.2);
+            box-shadow: 0 0 0 4px rgba(169, 50, 238, 0.18);
         }
 
         .image-card img {
+            display: block;
             width: 100%;
             height: 300px;
             object-fit: cover;
-            display: block;
         }
 
         .image-label {
-            padding: 12px;
+            padding: 12px 10px;
             text-align: center;
-            font-weight: 600;
+            background: #f1f5f9;
+            font-weight: 700;
             color: #0f172a;
-            background-color: #f1f5f9;
         }
 
         .quiz-buttons {
             display: flex;
-            gap: 12px;
             justify-content: center;
         }
 
-        .quiz-btn {
+        .submit-btn {
             padding: 12px 24px;
             border: none;
-            border-radius: 6px;
-            font-weight: 600;
+            border-radius: 8px;
+            background: #a932ee;
+            color: white;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .submit-btn {
-            background-color: #a932ee;
-            color: #ffffff;
-        }
-
-        .submit-btn:hover:not(:disabled) {
-            background-color: #8b2bc4;
         }
 
         .submit-btn:disabled {
-            background-color: #cbd5e1;
+            background: #cbd5e1;
+            color: #64748b;
             cursor: not-allowed;
         }
 
         .quiz-results {
-            background-color: #eff6ff;
-            border: 1px solid #dbeafe;
-            border-radius: 8px;
-            padding: 24px;
-            text-align: center;
             display: none;
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            padding: 28px 20px;
+            text-align: center;
         }
 
         .quiz-results.active {
@@ -446,48 +386,63 @@
             font-size: 2.5rem;
             font-weight: 800;
             color: #a932ee;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .results-text {
-            font-size: 1.1rem;
+            font-size: 1.02rem;
             color: #0f172a;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .restart-btn {
-            padding: 10px 24px;
-            background-color: #a932ee;
-            color: #ffffff;
             border: none;
-            border-radius: 6px;
-            font-weight: 600;
+            background: #a932ee;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .restart-btn:hover {
-            background-color: #8b2bc4;
+        footer {
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 24px 0;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 640px) {
+            .images-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
-    <!-- Google tag (gtag.js) -->
+
+    <!-- Google tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-62TT5XB7VZ"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-62TT5XB7VZ');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-62TT5XB7VZ');
     </script>
 </head>
 
-
-<body>
-
-     <header>
+<header>
         <div class="container nav-flex">
-            <div class="site-title">CS30-8P Preliminaries</div>
-            <nav class="nav-links">
+            <div class="site-title">CS30-8P</div>
+            <nav class="nav-links" aria-label="Main navigation">
                 <a href="#stats">Results</a>
                 <a href="#comparison">Groups</a>
                 <a href="#clues">Visual Clues</a>
@@ -496,121 +451,179 @@
         </div>
     </header>
 
-    <section class="hero">
+<body>
+        <section class="hero">
         <div class="container">
             <h1>Can You Spot <span>Fake AI Media?</span></h1>
-            <p>A simple comparative summary on how Senior High School Students and Millennials distinguish AI-generated images and videos.</p>
-            <!-- Single, clean main button -->
-            <a href="#stats" class="hero-btn">View Key Results</a>
+            <p>AI has revolutionized the way we create and consume media, but it also poses challenges in distinguishing between real and synthetic content with age groups.</p>
+            <p><b>Are you up for the challenge?</b></p>
+            <a href="#challenge" class="hero-btn">Challenge Now</a>
         </div>
     </section>
 
-    <hr>
+    
+
+
+    <section id="challenge" class="section">
+        <div class="container">
+            <h2 class="section-heading">Challenge Yourself</h2>
+
+            <div class="age-selection" id="ageSelection">
+                <h3>What is your age group?</h3>
+                <div class="age-buttons">
+                    <button class="age-btn" data-group="baby-boomers">Baby Boomers (1946–1964)</button>
+                    <button class="age-btn" data-group="generation-x">Generation X (1965–1980)</button>
+                    <button class="age-btn" data-group="generation-y">Generation Y (1981–1996)</button>
+                    <button class="age-btn" data-group="generation-z">Generation Z (1997–2012)</button>
+                    <button class="age-btn" data-group="generation-alpha">Generation Alpha (2013–2025)</button>
+                </div>
+            </div>
+
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-progress">
+                    <span id="questionCounter">Question 1 of 5</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>Which image is REAL?</h4>
+                </div>
+
+                <div class="images-grid">
+                    <div class="image-card" data-selection="image1">
+                        <img src="https://placehold.co/600x400/eeeeee/333333?text=Image+1" alt="Image 1" />
+                        <div class="image-label">Image 1</div>
+                    </div>
+
+                    <div class="image-card" data-selection="image2">
+                        <img src="https://placehold.co/600x400/dfe7ff/1f2937?text=Image+2" alt="Image 2" />
+                        <div class="image-label">Image 2</div>
+                    </div>
+                </div>
+
+                <div class="quiz-buttons">
+                    <button class="submit-btn" id="submitBtn" disabled>Submit Answer</button>
+                </div>
+            </div>
+
+            <div class="quiz-results" id="quizResults">
+                <div class="results-score" id="finalScore">0/5</div>
+                <div class="results-text" id="resultsText">You have completed the challenge.</div>
+                <button class="restart-btn" id="restartBtn">Take Quiz Again</button>
+            </div>
+        </div>
+    </section>
 
     <script>
-        let selectedAgeGroup = null;
-        let currentQuestion = 0;
-        let score = 0;
-        let selectedAnswer = null;
+        document.addEventListener("DOMContentLoaded", function () {
+            let selectedAgeGroup = null;
+            let currentQuestion = 0;
+            let score = 0;
+            let selectedAnswer = null;
 
-        // Sample quiz data - update with your actual questions
-        const quizData = [
-            { real: 'image1', ai: 'image2' },
-            { real: 'image2', ai: 'image1' },
-            { real: 'image1', ai: 'image2' },
-            { real: 'image2', ai: 'image1' },
-            { real: 'image1', ai: 'image2' }
-        ];
+            const quizData = [
+                { real: "image1" },
+                { real: "image2" },
+                { real: "image1" },
+                { real: "image2" },
+                { real: "image1" }
+            ];
 
-        // Age group selection
-        document.querySelectorAll('.age-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                selectedAgeGroup = this.dataset.group;
-                
-                // Show quiz after selecting age group
-                document.getElementById('ageSelection').style.display = 'none';
-                document.getElementById('quizContainer').classList.add('active');
-            });
-        });
+            const ageButtons = document.querySelectorAll(".age-btn");
+            const imageCards = document.querySelectorAll(".image-card");
+            const ageSelection = document.getElementById("ageSelection");
+            const quizContainer = document.getElementById("quizContainer");
+            const quizResults = document.getElementById("quizResults");
+            const submitBtn = document.getElementById("submitBtn");
+            const progressFill = document.getElementById("progressFill");
+            const questionCounter = document.getElementById("questionCounter");
+            const finalScore = document.getElementById("finalScore");
+            const resultsText = document.getElementById("resultsText");
+            const restartBtn = document.getElementById("restartBtn");
 
-        // Image card selection
-        document.querySelectorAll('.image-card').forEach(card => {
-            card.addEventListener('click', function() {
-                document.querySelectorAll('.image-card').forEach(c => c.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedAnswer = this.dataset.selection;
-                
-                // Enable submit button when an image is selected
-                document.getElementById('submitBtn').disabled = false;
-            });
-        });
-
-        // Submit answer
-        document.getElementById('submitBtn').addEventListener('click', function() {
-            const correctAnswer = quizData[currentQuestion].real;
-            
-            if (selectedAnswer === correctAnswer) {
-                score++;
+            function updateProgress() {
+                const percent = ((currentQuestion + 1) / quizData.length) * 100;
+                progressFill.style.width = percent + "%";
+                questionCounter.textContent = "Question " + (currentQuestion + 1) + " of " + quizData.length;
             }
 
-            currentQuestion++;
-
-            if (currentQuestion < quizData.length) {
-                // Load next question
+            function resetSelection() {
+                imageCards.forEach(card => card.classList.remove("selected"));
                 selectedAnswer = null;
-                document.querySelectorAll('.image-card').forEach(c => c.classList.remove('selected'));
-                document.getElementById('submitBtn').disabled = true;
-                
-                const progress = ((currentQuestion + 1) / quizData.length) * 100;
-                document.getElementById('progressFill').style.width = progress + '%';
-                document.getElementById('questionCounter').textContent = `Question ${currentQuestion + 1} of ${quizData.length}`;
-            } else {
-                // Show results
-                showResults();
+                submitBtn.disabled = true;
             }
-        });
 
-        // Show results
-        function showResults() {
-            document.getElementById('quizContainer').classList.remove('active');
-            document.getElementById('quizResults').classList.add('active');
-            
-            const percentage = Math.round((score / quizData.length) * 100);
-            document.getElementById('finalScore').textContent = `${score}/${quizData.length}`;
-            document.getElementById('resultsText').textContent = `Great job! You scored ${percentage}% - Age Group: ${selectedAgeGroup}`;
-        }
+            ageButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    ageButtons.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+                    selectedAgeGroup = this.dataset.group;
 
-        // Restart quiz
-        document.getElementById('restartBtn').addEventListener('click', function() {
-            currentQuestion = 0;
-            score = 0;
-            selectedAnswer = null;
-            selectedAgeGroup = null;
-            
-            document.getElementById('quizResults').classList.remove('active');
-            document.getElementById('ageSelection').style.display = 'block';
-            document.getElementById('quizContainer').classList.remove('active');
-            
-            document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.image-card').forEach(c => c.classList.remove('selected'));
-            document.getElementById('submitBtn').disabled = true;
-            
-            document.getElementById('progressFill').style.width = '20%';
-            document.getElementById('questionCounter').textContent = 'Question 1 of 5';
+                    ageSelection.style.display = "none";
+                    quizContainer.classList.add("active");
+                    updateProgress();
+                });
+            });
+
+            imageCards.forEach(card => {
+                card.addEventListener("click", function () {
+                    imageCards.forEach(item => item.classList.remove("selected"));
+                    this.classList.add("selected");
+                    selectedAnswer = this.dataset.selection;
+                    submitBtn.disabled = false;
+                });
+            });
+
+            submitBtn.addEventListener("click", function () {
+                if (!selectedAnswer) return;
+
+                const correctAnswer = quizData[currentQuestion].real;
+
+                if (selectedAnswer === correctAnswer) {
+                    score++;
+                }
+
+                currentQuestion++;
+
+                if (currentQuestion < quizData.length) {
+                    resetSelection();
+                    updateProgress();
+                } else {
+                    const percentage = Math.round((score / quizData.length) * 100);
+                    finalScore.textContent = score + "/" + quizData.length;
+                    resultsText.textContent = "You scored " + percentage + "% in the " + selectedAgeGroup + " category.";
+                    quizContainer.classList.remove("active");
+                    quizResults.classList.add("active");
+                }
+            });
+
+            restartBtn.addEventListener("click", function () {
+                selectedAgeGroup = null;
+                currentQuestion = 0;
+                score = 0;
+                selectedAnswer = null;
+
+                ageButtons.forEach(btn => btn.classList.remove("active"));
+                imageCards.forEach(card => card.classList.remove("selected"));
+                ageSelection.style.display = "block";
+                quizContainer.classList.remove("active");
+                quizResults.classList.remove("active");
+                submitBtn.disabled = true;
+                progressFill.style.width = "20%";
+                questionCounter.textContent = "Question 1 of 5";
+            });
         });
     </script>
 
-</body>
-</html>
 
- <section id="stats" class="section">
+
+    <section id="stats" class="section">
         <div class="container">
             <h2 class="section-heading">Key Study Findings</h2>
-            
+
             <div class="stats-grid">
-                
                 <div class="stat-box">
                     <div class="stat-number">59.1%</div>
                     <div class="stat-title">Millennials</div>
@@ -628,7 +641,6 @@
                     <div class="stat-title">Participants</div>
                     <div class="stat-subtext">95 SHS Students and 29 Millennials surveyed in Quezon City.</div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -638,9 +650,8 @@
     <section id="comparison" class="section">
         <div class="container">
             <h2 class="section-heading">How Decision Styles Differed</h2>
-            
+
             <div class="comparison-grid">
-                
                 <div class="info-box">
                     <h3>Millennials (Ages 28–44)</h3>
                     <ul>
@@ -658,7 +669,6 @@
                         <li>Found multiple-choice identification more challenging.</li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </section>
@@ -666,13 +676,13 @@
     <section id="clues" class="section">
         <div class="container">
             <h2 class="section-heading">Top Visual Clues Used to Spot AI</h2>
-            
+
             <div class="clues-box">
                 <div class="clues-list">
-                    <span class="clue-tag"> Unnatural Lighting</span>
-                    <span class="clue-tag"> Facial Distortions</span>
-                    <span class="clue-tag"> Irregular Fingers & Hands</span>
-                    <span class="clue-tag"> Smooth/Plastic Textures</span>
+                    <span class="clue-tag">Unnatural Lighting</span>
+                    <span class="clue-tag">Facial Distortions</span>
+                    <span class="clue-tag">Irregular Fingers &amp; Hands</span>
+                    <span class="clue-tag">Smooth/Plastic Textures</span>
                     <span class="clue-tag">Overly Complex Backgrounds</span>
                 </div>
             </div>
@@ -684,3 +694,7 @@
             <p>Visquera, Ean Ic R. • CS30 Websites and Online Communication</p>
         </div>
     </footer>
+
+
+</body>
+</html>
