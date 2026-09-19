@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can You Spot Fake AI Media?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 0;
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .nav-links a {
+            color: #64748b;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .hero {
+            padding: 60px 0 40px 0;
+            text-align: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background-color: #eff6ff;
+            color: #a932ee;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #dbeafe;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: #a932ee;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto 24px auto;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #2563eb;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+         .hero-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .section {
+            padding: 40px 0;
+        }
+
+        .section-heading {
+            font-size: 1.4rem;
+            color: #0f172a;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .stats-grid {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            flex: 1;
+            min-width: 220px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px 16px;
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #a932ee;
+            margin-bottom: 4px;
+        }
+
+        .stat-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .stat-subtext {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .comparison-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-box {
+            flex: 1;
+            min-width: 280px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .info-box h3 {
+            font-size: 1.1rem;
+            color: #0f172a;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eff6ff;
+        }
+
+        .info-box ul {
+            list-style-type: none;
+        }
+
+        .info-box li {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .info-box li::before {
+            content: "•";
+            color: #a932ee;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .clues-box {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .clues-list {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 12px;
+            justify-content: left;
+        }
+
+        .clue-tag {
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 24px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+     <header>
+        <div class="container nav-flex">
+            <div class="site-title">CS30-8P Preliminaries</div>
+            <nav class="nav-links">
+                <a href="#stats">Results</a>
+                <a href="#comparison">Groups</a>
+                <a href="#clues">Visual Clues</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Can You Spot <span>Fake AI Media?</span></h1>
+            <p>A simple comparative summary on how Senior High School Students and Millennials distinguish AI-generated images and videos.</p>
+            <!-- Single, clean main button -->
+            <a href="#stats" class="hero-btn">View Key Results</a>
+        </div>
+    </section>
+
+<hr>
+
+    <section id="stats" class="section">
+        <div class="container">
+            <h2 class="section-heading">Key Study Findings</h2>
+            
+            <div class="stats-grid">
+                
+                <div class="stat-box">
+                    <div class="stat-number">59.1%</div>
+                    <div class="stat-title">Millennials</div>
+                    <div class="stat-subtext">Higher accuracy due to taking more time to analyze visual details.</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">55.5%</div>
+                    <div class="stat-title">SHS Students</div>
+                    <div class="stat-subtext">Higher daily tech exposure, but relied more on initial instinct.</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">124</div>
+                    <div class="stat-title">Participants</div>
+                    <div class="stat-subtext">95 SHS Students and 29 Millennials surveyed in Quezon City.</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="comparison" class="section">
+        <div class="container">
+            <h2 class="section-heading">How Decision Styles Differed</h2>
+            
+            <div class="comparison-grid">
+                
+                <div class="info-box">
+                    <h3>Millennials (Ages 28–44)</h3>
+                    <ul>
+                        <li>Focused on careful visual inspection.</li>
+                        <li>Checked lighting, image sharpness, and textures.</li>
+                        <li>Scored higher in video detection tests (63.3%).</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>SHS Students (Ages 18–19)</h3>
+                    <ul>
+                        <li>Relied mainly on quick instincts and immediate impressions.</li>
+                        <li>Scored high on simple single-image tests (70.9%).</li>
+                        <li>Found multiple-choice identification more challenging.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="clues" class="section">
+        <div class="container">
+            <h2 class="section-heading">Top Visual Clues Used to Spot AI</h2>
+            
+            <div class="clues-box">
+                <div class="clues-list">
+                    <span class="clue-tag"> Unnatural Lighting</span>
+                    <span class="clue-tag"> Facial Distortions</span>
+                    <span class="clue-tag"> Irregular Fingers & Hands</span>
+                    <span class="clue-tag"> Smooth/Plastic Textures</span>
+                    <span class="clue-tag">Overly Complex Backgrounds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Visquera, Ean Ic R. • CS30 Websites and Online Communication</p>
+        </div>
+    </footer>
+
+</body>
+</html>
