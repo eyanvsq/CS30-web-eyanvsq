@@ -65,7 +65,7 @@
 
         .hero {
             position: relative;
-            min-height: 72vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -313,6 +313,10 @@
             margin-bottom: 26px;
         }
 
+        .images-grid[hidden] {
+            display: none;
+        }
+
         .image-card {
             position: relative;
             border: 3px solid #e2e8f0;
@@ -392,7 +396,12 @@
         .results-text {
             font-size: 1.02rem;
             color: #0f172a;
-            margin-bottom: 18px;
+            margin: 0 0 8px;
+        }
+
+        .results-insight {
+            margin: 0 0 18px;
+            color: #334155;
         }
 
         .restart-btn {
@@ -488,15 +497,53 @@
                     <h4>Which image is REAL?</h4>
                 </div>
 
-                <div class="images-grid">
+                <div class="images-grid" data-question="0">
                     <div class="image-card" data-selection="image1">
-                        <img src="https://placehold.co/600x400/eeeeee/333333?text=Image+1" alt="Image 1" />
-                        <div class="image-label">Image 1</div>
+                        <img src="https://preview.redd.it/show-me-your-ai-art-that-doesnt-look-like-ai-art-v0-vkn5d9p1egae1.jpeg?width=3060&format=pjpg&auto=webp&s=d70612ba14400e2c66e7419db05161fb38f460a1" alt="Image 1" />
                     </div>
 
                     <div class="image-card" data-selection="image2">
-                        <img src="https://placehold.co/600x400/dfe7ff/1f2937?text=Image+2" alt="Image 2" />
-                        <div class="image-label">Image 2</div>
+                        <img src="https://preview.redd.it/feedback-please-trying-to-become-a-food-photography-pro-any-v0-3mfdiavoqhwg1.png?width=1080&crop=smart&auto=webp&s=30546e3a7bf73f803d02bac86257e82fbb21918f" alt="Image 2" />
+                    </div>
+                </div>
+
+                   <div class="images-grid" data-question="1" hidden>
+                    <div class="image-card" data-selection="image3">
+                        <img src="https://preview.redd.it/show-me-your-ai-art-that-doesnt-look-like-ai-art-v0-mxk5302hvgae1.png?width=4262&format=png&auto=webp&s=9b9a6b30645905e7eb36d8be76af7ef3221f67f7" alt="Image 3" />
+                    </div>
+
+                    <div class="image-card" data-selection="image4">
+                        <img src="https://www.cincinnatiartmuseum.org/media/y0nb05bi/artafterdark829.jpg" alt="Image 4" />
+                    </div>
+                </div>
+
+                   <div class="images-grid" data-question="2" hidden>
+                    <div class="image-card" data-selection="image5">
+                        <img src="https://preview.redd.it/show-me-your-ai-art-that-doesnt-look-like-ai-art-v0-k3eyokcg9fae1.jpeg?width=3200&format=pjpg&auto=webp&s=19d8dd5ff0c1acb5b6d87dff441035b3bd0e01ca" alt="Image 5" />
+                    </div>
+
+                    <div class="image-card" data-selection="image6">
+                        <img src="https://cdn5.tropicalsky.co.uk/images/800x600/horseback-riding-cariboo-chilcotin-coast.jpg" alt="Image 6" />
+                    </div>
+                </div>
+
+                 <div class="images-grid" data-question="3" hidden>
+                    <div class="image-card" data-selection="image7">
+                        <img src="https://sebastiangreen.co.uk/wp-content/uploads/2025/08/997-ai-generated.webp" alt="Image 7" />
+                    </div>
+
+                    <div class="image-card" data-selection="image8">
+                        <img src="https://www.lexus.com.ph/content/dam/lexus-v3-blueprint/models/coupe/lc/lc-500/my19/gallery/exterior/lexus-lc500-gallery-ext-10-d.jpg" alt="Image 8" />
+                    </div>
+                </div>
+
+                 <div class="images-grid" data-question="4" hidden>
+                    <div class="image-card" data-selection="image9">
+                        <img src="https://www.travelandleisure.com/thmb/ernt6y6ANnuHC_JrqdFlHdgqaqg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/brooklyn-bridge-NYCTG0221-e9c6369ad3cf4fac9c2e587e3acf76f6.jpg" alt="Image 9" />
+                    </div>
+
+                    <div class="image-card" data-selection="image10">
+                        <img src="https://sebastiangreen.co.uk/wp-content/uploads/2025/08/ny-street-2-ai-generated-.webp" alt="Image 10" />
                     </div>
                 </div>
 
@@ -505,9 +552,11 @@
                 </div>
             </div>
 
+
             <div class="quiz-results" id="quizResults">
                 <div class="results-score" id="finalScore">0/5</div>
-                <div class="results-text" id="resultsText">You have completed the challenge.</div>
+                <p class="results-text" id="resultsText">You have completed the challenge.</p>
+                <p class="results-insight"><strong>Did you know?</strong> <span id="resultsInsight"></span></p>
                 <button class="restart-btn" id="restartBtn">Take Quiz Again</button>
             </div>
         </div>
@@ -521,15 +570,32 @@
             let selectedAnswer = null;
 
             const quizData = [
-                { real: "image1" },
                 { real: "image2" },
-                { real: "image1" },
-                { real: "image2" },
-                { real: "image1" }
+                { real: "image4" },
+                { real: "image5" },
+                { real: "image8" },
+                { real: "image9" }
             ];
+
+            const ageGroupNames = {
+                "baby-boomers": "Baby Boomers",
+                "generation-x": "Gen X",
+                "generation-y": "Millennials",
+                "generation-z": "Gen Z",
+                "generation-alpha": "Gen Alpha"
+            };
+
+            const ageGroupInsights = {
+                "baby-boomers": "Older adults usually double-check the facts and logic behind a post instead of making quick guesses. While this careful thinking helps spot fake news, high-quality AI images with realistic textures can still trick the eyes. Checking where the image came from is still their best superpower!",
+                "generation-x": "Gen Xers are great at mixing tech skills with healthy skepticism. Research shows they like to look closely at practical details—like weird shadows, off lighting, or messy backgrounds—before deciding if something is real. Taking that quick pause helps them spot fake media easily!",
+                "generation-y": "Based on a small school-based research, Millennials got the highest total accuracy score in deepfake detection tests at <strong>59.1%</strong>, and hit <strong>63.3%</strong> on video tests! Because they grew up alongside the internet, they are used to checking fine details like skin textures, eye reflections, and background blurs.",
+                "generation-z": "Based on a small school-based research, High school students and Gen Z hit an awesome <strong>70.9%</strong> accuracy on single-image tests because they spend so much time online! However, since Gen Z usually relies on quick gut feelings and fast scrolling, tricky deepfake videos that need slow, side-by-side checking can sometimes slip past them.",
+                "generation-alpha": "Gen Alpha is the very first generation growing up with AI tools around them every single day! Even though they are super comfortable with technology, seeing AI pictures all the time can make fake images feel \"normal.\" Learning visual clues early on helps them spot fake media fast!"
+            };
 
             const ageButtons = document.querySelectorAll(".age-btn");
             const imageCards = document.querySelectorAll(".image-card");
+            const questionGrids = document.querySelectorAll(".images-grid[data-question]");
             const ageSelection = document.getElementById("ageSelection");
             const quizContainer = document.getElementById("quizContainer");
             const quizResults = document.getElementById("quizResults");
@@ -538,12 +604,16 @@
             const questionCounter = document.getElementById("questionCounter");
             const finalScore = document.getElementById("finalScore");
             const resultsText = document.getElementById("resultsText");
+            const resultsInsight = document.getElementById("resultsInsight");
             const restartBtn = document.getElementById("restartBtn");
 
             function updateProgress() {
                 const percent = ((currentQuestion + 1) / quizData.length) * 100;
                 progressFill.style.width = percent + "%";
                 questionCounter.textContent = "Question " + (currentQuestion + 1) + " of " + quizData.length;
+                questionGrids.forEach((grid, index) => {
+                    grid.hidden = index !== currentQuestion;
+                });
             }
 
             function resetSelection() {
@@ -618,7 +688,8 @@
                 } else {
                     const percentage = Math.round((score / quizData.length) * 100);
                     finalScore.textContent = score + "/" + quizData.length;
-                    resultsText.textContent = "You scored " + percentage + "% in the " + selectedAgeGroup + " category.";
+                    resultsText.textContent = "You scored " + percentage + "% in the " + ageGroupNames[selectedAgeGroup] + " category.";
+                    resultsInsight.innerHTML = ageGroupInsights[selectedAgeGroup];
 
                     // Google Analytics tracking for Quiz Completion
                     if (typeof gtag === 'function') {
@@ -655,8 +726,7 @@
                 quizContainer.classList.remove("active");
                 quizResults.classList.remove("active");
                 submitBtn.disabled = true;
-                progressFill.style.width = "20%";
-                questionCounter.textContent = "Question 1 of 5";
+                updateProgress();
             });
         });
     </script>
