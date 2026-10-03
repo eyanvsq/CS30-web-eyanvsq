@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="How age groups differ in spotting AI versus real media, and how cognitive aging theory influences digital perception and judgment." />    <meta name="description" content="Explore how different age groups detect real versus AI-generated media and how cognitive aging theory shapes perception, media literacy, and digital judgment." />
+    <title>Identifying AI and Real Media</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 0;
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .site-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .nav-links a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #a932ee;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: url("https://cdn.pixabay.com/photo/2015/06/24/15/45/hands-820272_1280.jpg") center/cover no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2.4rem, 5vw, 4.2rem);
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: #d6a5ff;
+        }
+
+        .hero p {
+            margin: 0 auto 28px;
+            max-width: 680px;
+            font-size: 1.08rem;
+            color: #f2f7ff;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: #a932ee;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hero-btn:hover {
+            background: #8f2bc7;
+        }
+
+        .section {
+            padding: 42px 0;
+        }
+
+        .section-heading {
+            margin: 0 0 22px;
+            font-size: 1.45rem;
+            color: #0f172a;
+        }
+
+        .stats-grid,
+        .comparison-grid {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box,
+        .info-box {
+            flex: 1;
+            min-width: 240px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 24px 18px;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #a932ee;
+            margin-bottom: 6px;
+        }
+
+        .stat-title {
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .stat-subtext {
+            color: #64748b;
+            font-size: 0.88rem;
+        }
+
+        .info-box h3 {
+            margin: 0 0 12px;
+            font-size: 1.08rem;
+            color: #0f172a;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f3e8ff;
+        }
+
+        .info-box ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .info-box li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            color: #475569;
+        }
+
+        .info-box li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #a932ee;
+            font-weight: 700;
+        }
+
+        .clues-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 24px;
+        }
+
+        .clues-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .clue-tag {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-size: 0.84rem;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .age-selection {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 32px 24px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .age-selection h3 {
+            margin: 0 0 18px;
+            color: #0f172a;
+            font-size: 1.2rem;
+        }
+
+        .age-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .age-btn {
+            padding: 10px 18px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #475569;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .age-btn:hover {
+            border-color: #a932ee;
+            color: #a932ee;
+        }
+
+        .age-btn.active {
+            background: #a932ee;
+            border-color: #a932ee;
+            color: #ffffff;
+        }
+
+        .quiz-container {
+            display: none;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 28px 20px;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .quiz-progress {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 7px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-fill {
+            width: 20%;
+            height: 100%;
+            background: #a932ee;
+            transition: width 0.25s ease;
+        }
+
+        .quiz-question {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .quiz-question h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #0f172a;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-bottom: 26px;
+        }
+
+        .images-grid[hidden] {
+            display: none;
+        }
+
+        .image-card {
+            position: relative;
+            border: 3px solid #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .image-card:hover {
+            border-color: #a932ee;
+            transform: translateY(-1px);
+        }
+
+        .image-card.selected {
+            border-color: #a932ee;
+            box-shadow: 0 0 0 4px rgba(169, 50, 238, 0.18);
+        }
+
+        .image-card img {
+            display: block;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .image-label {
+            padding: 12px 10px;
+            text-align: center;
+            background: #f1f5f9;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .submit-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: #a932ee;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .submit-btn:disabled {
+            background: #cbd5e1;
+            color: #64748b;
+            cursor: not-allowed;
+        }
+
+        .quiz-results {
+            display: none;
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        .quiz-results.active {
+            display: block;
+        }
+
+        .results-score {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #a932ee;
+            margin-bottom: 8px;
+        }
+
+        .results-text {
+            font-size: 1.02rem;
+            color: #0f172a;
+            margin: 0 0 8px;
+        }
+
+        .results-insight {
+            margin: 0 0 18px;
+            color: #334155;
+        }
+
+        .restart-btn {
+            border: none;
+            background: #a932ee;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 24px 0;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 640px) {
+            .images-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+
+    <!-- Google tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-62TT5XB7VZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-62TT5XB7VZ');
+    </script>
+</head>
+
+<header>
+    <div class="container nav-flex">
+        <div class="site-title">CS30-8P</div>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="#stats">Results</a>
+            <a href="#comparison">Groups</a>
+            <a href="#clues">Visual Clues</a>
+            <a href="#challenge">Challenge</a>
+        </nav>
+    </div>
+</header>
+
+<body>
+    <section class="hero">
+        <div class="container">
+            <h1>Can You Spot Which is <span>AI or Not?</span></h1>
+            <p>AI-generated media becomes harder to detect, age may influence how people judge what is real. This page explores how <b>cognitive aging theory</b> helps explain differences across age groups in identifying authentic versus synthetic content.</p>
+            <p><b>Are you up for the challenge?</b></p>
+            <a href="#challenge" class="hero-btn">Challenge Now</a>
+        </div>
+    </section>
+
+    <section id="challenge" class="section">
+        <div class="container">
+            <h2 class="section-heading">Challenge Yourself</h2>
+
+            <div class="age-selection" id="ageSelection">
+                <h3>What is your age group?</h3>
+                <div class="age-buttons">
+                    <button class="age-btn" data-group="baby-boomers">Baby Boomers (1946–1964)</button>
+                    <button class="age-btn" data-group="generation-x">Generation X (1965–1980)</button>
+                    <button class="age-btn" data-group="generation-y">Generation Y (1981–1996)</button>
+                    <button class="age-btn" data-group="generation-z">Generation Z (1997–2012)</button>
+                    <button class="age-btn" data-group="generation-alpha">Generation Alpha (2013–2025)</button>
+                </div>
+            </div>
+
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-progress">
+                    <span id="questionCounter">Question 1 of 5</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>Which image is REAL?</h4>
+                </div>
+
+                <div class="images-grid" data-question="0">
+                    <div class="image-card" data-selection="image1">
+                        <img src="https://preview.redd.it/show-me-your-ai-art-that-doesnt-look-like-ai-art-v0-vkn5d9p1egae1.jpeg?width=3060&format=pjpg&auto=webp&s=d70612ba14400e2c66e7419db05161fb38f460a1" alt="Image 1" />
+                    </div>
+
+                    <div class="image-card" data-selection="image2">
+                        <img src="https://preview.redd.it/feedback-please-trying-to-become-a-food-photography-pro-any-v0-3mfdiavoqhwg1.png?width=1080&crop=smart&auto=webp&s=30546e3a7bf73f803d02bac86257e82fbb21918f" alt="Image 2" />
+                    </div>
+                </div>
+
+                   <div class="images-grid" data-question="1" hidden>
+                    <div class="image-card" data-selection="image3">
+                        <img src="https://preview.redd.it/show-me-your-ai-art-that-doesnt-look-like-ai-art-v0-mxk5302hvgae1.png?width=4262&format=png&auto=webp&s=9b9a6b30645905e7eb36d8be76af7ef3221f67f7" alt="Image 3" />
+                    </div>
+
+                    <div class="image-card" data-selection="image4">
+                        <img src="https://www.cincinnatiartmuseum.org/media/y0nb05bi/artafterdark829.jpg" alt="Image 4" />
+                    </div>
+                </div>
+
+                   <div class="images-grid" data-question="2" hidden>
+                    <div class="image-card" data-selection="image5">
+                        <img src="https://preview.redd.it/show-me-your-ai-art-that-doesnt-look-like-ai-art-v0-k3eyokcg9fae1.jpeg?width=3200&format=pjpg&auto=webp&s=19d8dd5ff0c1acb5b6d87dff441035b3bd0e01ca" alt="Image 5" />
+                    </div>
+
+                    <div class="image-card" data-selection="image6">
+                        <img src="https://cdn5.tropicalsky.co.uk/images/800x600/horseback-riding-cariboo-chilcotin-coast.jpg" alt="Image 6" />
+                    </div>
+                </div>
+
+                 <div class="images-grid" data-question="3" hidden>
+                    <div class="image-card" data-selection="image7">
+                        <img src="https://sebastiangreen.co.uk/wp-content/uploads/2025/08/997-ai-generated.webp" alt="Image 7" />
+                    </div>
+
+                    <div class="image-card" data-selection="image8">
+                        <img src="https://www.lexus.com.ph/content/dam/lexus-v3-blueprint/models/coupe/lc/lc-500/my19/gallery/exterior/lexus-lc500-gallery-ext-10-d.jpg" alt="Image 8" />
+                    </div>
+                </div>
+
+                 <div class="images-grid" data-question="4" hidden>
+                    <div class="image-card" data-selection="image9">
+                        <img src="https://www.travelandleisure.com/thmb/ernt6y6ANnuHC_JrqdFlHdgqaqg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/brooklyn-bridge-NYCTG0221-e9c6369ad3cf4fac9c2e587e3acf76f6.jpg" alt="Image 9" />
+                    </div>
+
+                    <div class="image-card" data-selection="image10">
+                        <img src="https://sebastiangreen.co.uk/wp-content/uploads/2025/08/ny-street-2-ai-generated-.webp" alt="Image 10" />
+                    </div>
+                </div>
+
+                <div class="quiz-buttons">
+                    <button class="submit-btn" id="submitBtn" disabled>Submit Answer</button>
+                </div>
+            </div>
+
+
+            <div class="quiz-results" id="quizResults">
+                <div class="results-score" id="finalScore">0/5</div>
+                <p class="results-text" id="resultsText">You have completed the challenge.</p>
+                <p class="results-insight"><strong>Did you know?</strong> <span id="resultsInsight"></span></p>
+                <button class="restart-btn" id="restartBtn">Take Quiz Again</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let selectedAgeGroup = null;
+            let currentQuestion = 0;
+            let score = 0;
+            let selectedAnswer = null;
+
+            const quizData = [
+                { real: "image2" },
+                { real: "image4" },
+                { real: "image5" },
+                { real: "image8" },
+                { real: "image9" }
+            ];
+
+            const ageGroupNames = {
+                "baby-boomers": "Baby Boomers",
+                "generation-x": "Gen X",
+                "generation-y": "Millennials",
+                "generation-z": "Gen Z",
+                "generation-alpha": "Gen Alpha"
+            };
+
+            const ageGroupInsights = {
+                "baby-boomers": "Older adults usually double-check the facts and logic behind a post instead of making quick guesses. While this careful thinking helps spot fake news, high-quality AI images with realistic textures can still trick the eyes. Checking where the image came from is still their best superpower!",
+                "generation-x": "Gen Xers are great at mixing tech skills with healthy skepticism. Research shows they like to look closely at practical details—like weird shadows, off lighting, or messy backgrounds—before deciding if something is real. Taking that quick pause helps them spot fake media easily!",
+                "generation-y": "Based on a small school-based research, Millennials got the highest total accuracy score in deepfake detection tests at <strong>59.1%</strong>, and hit <strong>63.3%</strong> on video tests! Because they grew up alongside the internet, they are used to checking fine details like skin textures, eye reflections, and background blurs.",
+                "generation-z": "Based on a small school-based research, High school students and Gen Z hit an awesome <strong>70.9%</strong> accuracy on single-image tests because they spend so much time online! However, since Gen Z usually relies on quick gut feelings and fast scrolling, tricky deepfake videos that need slow, side-by-side checking can sometimes slip past them.",
+                "generation-alpha": "Gen Alpha is the very first generation growing up with AI tools around them every single day! Even though they are super comfortable with technology, seeing AI pictures all the time can make fake images feel \"normal.\" Learning visual clues early on helps them spot fake media fast!"
+            };
+
+            const ageButtons = document.querySelectorAll(".age-btn");
+            const imageCards = document.querySelectorAll(".image-card");
+            const questionGrids = document.querySelectorAll(".images-grid[data-question]");
+            const ageSelection = document.getElementById("ageSelection");
+            const quizContainer = document.getElementById("quizContainer");
+            const quizResults = document.getElementById("quizResults");
+            const submitBtn = document.getElementById("submitBtn");
+            const progressFill = document.getElementById("progressFill");
+            const questionCounter = document.getElementById("questionCounter");
+            const finalScore = document.getElementById("finalScore");
+            const resultsText = document.getElementById("resultsText");
+            const resultsInsight = document.getElementById("resultsInsight");
+            const restartBtn = document.getElementById("restartBtn");
+
+            function updateProgress() {
+                const percent = ((currentQuestion + 1) / quizData.length) * 100;
+                progressFill.style.width = percent + "%";
+                questionCounter.textContent = "Question " + (currentQuestion + 1) + " of " + quizData.length;
+                questionGrids.forEach((grid, index) => {
+                    grid.hidden = index !== currentQuestion;
+                });
+            }
+
+            function resetSelection() {
+                imageCards.forEach(card => card.classList.remove("selected"));
+                selectedAnswer = null;
+                submitBtn.disabled = true;
+            }
+
+            ageButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    ageButtons.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+                    selectedAgeGroup = this.dataset.group;
+
+                    // Google Analytics tracking for Age Selection
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'select_age_group', {
+                            'event_category': 'Quiz Interaction',
+                            'event_label': selectedAgeGroup
+                        });
+                    }
+
+                    ageSelection.style.display = "none";
+                    quizContainer.classList.add("active");
+                    updateProgress();
+                });
+            });
+
+            imageCards.forEach(card => {
+                card.addEventListener("click", function () {
+                    imageCards.forEach(item => item.classList.remove("selected"));
+                    this.classList.add("selected");
+                    selectedAnswer = this.dataset.selection;
+                    submitBtn.disabled = false;
+
+                    // Google Analytics tracking for Image Selection
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'select_image_option', {
+                            'event_category': 'Quiz Interaction',
+                            'event_label': selectedAnswer,
+                            'question_number': currentQuestion + 1
+                        });
+                    }
+                });
+            });
+
+            submitBtn.addEventListener("click", function () {
+                if (!selectedAnswer) return;
+
+                const correctAnswer = quizData[currentQuestion].real;
+                const isCorrect = (selectedAnswer === correctAnswer);
+
+                if (isCorrect) {
+                    score++;
+                }
+
+                // Google Analytics tracking for Answer Submission
+                if (typeof gtag === 'function') {
+                    gtag('event', 'submit_answer', {
+                        'event_category': 'Quiz Interaction',
+                        'question_number': currentQuestion + 1,
+                        'selected_option': selectedAnswer,
+                        'is_correct': isCorrect
+                    });
+                }
+
+                currentQuestion++;
+
+                if (currentQuestion < quizData.length) {
+                    resetSelection();
+                    updateProgress();
+                } else {
+                    const percentage = Math.round((score / quizData.length) * 100);
+                    finalScore.textContent = score + "/" + quizData.length;
+                    resultsText.textContent = "You scored " + percentage + "% in the " + ageGroupNames[selectedAgeGroup] + " category.";
+                    resultsInsight.innerHTML = ageGroupInsights[selectedAgeGroup];
+
+                    // Google Analytics tracking for Quiz Completion
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'quiz_completed', {
+                            'event_category': 'Quiz Results',
+                            'age_group': selectedAgeGroup,
+                            'final_score': score,
+                            'total_questions': quizData.length,
+                            'score_percentage': percentage
+                        });
+                    }
+
+                    quizContainer.classList.remove("active");
+                    quizResults.classList.add("active");
+                }
+            });
+
+            restartBtn.addEventListener("click", function () {
+                // Google Analytics tracking for Quiz Restart
+                if (typeof gtag === 'function') {
+                    gtag('event', 'restart_quiz', {
+                        'event_category': 'Quiz Interaction'
+                    });
+                }
+
+                selectedAgeGroup = null;
+                currentQuestion = 0;
+                score = 0;
+                selectedAnswer = null;
+
+                ageButtons.forEach(btn => btn.classList.remove("active"));
+                imageCards.forEach(card => card.classList.remove("selected"));
+                ageSelection.style.display = "block";
+                quizContainer.classList.remove("active");
+                quizResults.classList.remove("active");
+                submitBtn.disabled = true;
+                updateProgress();
+            });
+        });
+    </script>
+
+    <section id="stats" class="section">
+        <div class="container">
+            <h2 class="section-heading">Key Study Findings</h2>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">59.1%</div>
+                    <div class="stat-title">Millennials</div>
+                    <div class="stat-subtext">Higher accuracy due to taking more time to analyze visual details.</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">55.5%</div>
+                    <div class="stat-title">SHS Students</div>
+                    <div class="stat-subtext">Higher daily tech exposure, but relied more on initial instinct.</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">124</div>
+                    <div class="stat-title">Participants</div>
+                    <div class="stat-subtext">95 SHS Students and 29 Millennials surveyed in Quezon City.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="comparison" class="section">
+        <div class="container">
+            <h2 class="section-heading">How Decision Styles Differed</h2>
+
+            <div class="comparison-grid">
+                <div class="info-box">
+                    <h3>Millennials (Ages 28–44)</h3>
+                    <ul>
+                        <li>Focused on careful visual inspection.</li>
+                        <li>Checked lighting, image sharpness, and textures.</li>
+                        <li>Scored higher in video detection tests (63.3%).</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>SHS Students (Ages 18–19)</h3>
+                    <ul>
+                        <li>Relied mainly on quick instincts and immediate impressions.</li>
+                        <li>Scored high on simple single-image tests (70.9%).</li>
+                        <li>Found multiple-choice identification more challenging.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clues" class="section">
+        <div class="container">
+            <h2 class="section-heading">Top Visual Clues Used to Spot AI</h2>
+
+            <div class="clues-box">
+                <div class="clues-list">
+                    <span class="clue-tag">Unnatural Lighting</span>
+                    <span class="clue-tag">Facial Distortions</span>
+                    <span class="clue-tag">Irregular Fingers &amp; Hands</span>
+                    <span class="clue-tag">Smooth/Plastic Textures</span>
+                    <span class="clue-tag">Overly Complex Backgrounds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Visquera, Ean Ic R. • CS30 Websites and Online Communication</p>
+        </div>
+    </footer>
+</body>
+</html>
+
