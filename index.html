@@ -561,6 +561,15 @@
         }
         gtag('js', new Date());
         gtag('config', 'G-62TT5XB7VZ');
+
+        // Custom tracking for Email Campaign Arrivals
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('utm_source') === 'email') {
+            gtag('event', 'newsletter_link_click', {
+                'event_category': 'Marketing Campaign',
+                'event_label': urlParams.get('utm_content') || 'email_link'
+            });
+        }
     </script>
 </head>
 
